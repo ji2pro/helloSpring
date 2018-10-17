@@ -7,14 +7,11 @@ public class TvUserContainer {
 
 	public static void main(String[] args) {
 
-		AbstractApplicationContext  factory =
+		AbstractApplicationContext factory =
 				new GenericXmlApplicationContext("applicationContext.xml");
-		TV tv = (TV)factory.getBean("tv");
-		
+		TV tv = (TV)factory.getBean("samsungTV");
 		tv.powerOn();
 		tv.volumeUp();
-		tv.volumeDown();
-		tv.powerOff();
-
+		System.out.println(((SamsungTV)tv).getProgram());
 	}
 }
