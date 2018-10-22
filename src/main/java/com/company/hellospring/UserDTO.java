@@ -25,6 +25,10 @@ public class UserDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", password=" + password + ", name=" + name + ", role=" + role + "]";
+	}
 	public String getRole() {
 		return role;
 	}
