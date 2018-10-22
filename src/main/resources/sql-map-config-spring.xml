@@ -10,6 +10,7 @@
 	<!-- Alias 설정 -->
 	<typeAliases>
 		<typeAlias alias="user" type="com.company.hellospring.UserDTO" />
+		<typeAlias alias="board" type="com.company.hellospring.board.BoardDTO" />
 	</typeAliases>
 	
 </configuration>
