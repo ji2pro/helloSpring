@@ -24,7 +24,11 @@ public class BoardDAOMybatis {
 
 	// 등록
 	public int insertBoard(BoardDTO dto) {
-		return 0;
+		return mybatis.insert("board.insertBoard");
+	}
+	
+	public int insertBoardProc(BoardDTO dto) {
+		return mybatis.insert("board.insertBoardProc", dto);
 	}
 
 	// 수정
