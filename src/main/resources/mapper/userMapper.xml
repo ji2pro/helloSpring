@@ -2,7 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
+	<!-- 전체 조회 -->
 	<select id="getUsers" resultType="user">
-		SELECT * FROM USERS ORDER BY ID
+		select * from users order by id
 	</select>
+	
+	<!-- 단건 조회 -->
+	<select id="getUser" parameterType="user" resultType="user">
+		select * from users where id = #{id}
+	</select>
+	
+	<!-- 등록 -->
+	<insert id="insertUser" parameterType="user">
+		insert into users (id, password, name, role)
+		values (#{id}, #{password}, #{name}, #{role})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="updateUser" parameterType="user">
+		update users set password = #{password},
+						 name = #{name},
+						 role = #{role}
+		where id = #{id}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteUser" parameterType="user">
+		delete from users where id = #{id}
+	</delete>
+	
 </mapper> 

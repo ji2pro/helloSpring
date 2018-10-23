@@ -5,4 +5,15 @@
 	<select id="getBoards" resultType="board">
 		SELECT * FROM BOARD ORDER BY REGDATE DESC
 	</select>
+	
+	<insert id="insertBoardProc" statementType="CALLABLE" parameterType="board">
+	{ call BOARD_INS_PROC(
+		#{title},
+		#{writer},
+		#{content, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{seq, mode=OUT, jdbcType=NUMERIC, javaType=int},
+		#{out_msg, mode=OUT, jdbcType=VARCHAR, javaType=string}
+		)
+	}
+	</insert>
 </mapper> 
