@@ -3,9 +3,44 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 	<!-- 전체 조회 -->
-	<select id="getUsers" resultType="user">
+	<select id="getUsers" resultType="user" parameterType="userSearch">
+	SELECT * FROM ( SELECT U.*, ROWNUM RN FROM (
 		SELECT * FROM USERS
-			ORDER BY ID
+		<where>
+			<if test="ids != null">
+				ID IN
+				<foreach collection="ids" open="(" close=")" separator="," item="item">
+					#{item}
+				</foreach>
+			</if>
+			<if test="searchCondition == 'id'">
+				AND ID LIKE '%' || #{searchKeyword} || '%'
+			</if>
+			<if test="searchCondition == 'name'">
+				AND NAME LIKE '%' || #{searchKeyword} || '%'		
+			</if>
+		</where>
+		ORDER BY ID
+	) U ) A WHERE RN BETWEEN #{start} and #{end}
+	</select>
+	
+	<select id="getCnt" resultType="int" parameterType="userSearch">
+		SELECT COUNT(*)
+			FROM USERS
+		<where>
+			<if test="ids != null">
+				ID IN
+				<foreach collection="ids" open="(" close=")" separator="," item="item">
+					#{item}
+				</foreach>
+			</if>
+			<if test="searchCondition == 'id'">
+				AND ID LIKE '%' || #{searchKeyword} || '%'
+			</if>
+			<if test="searchCondition == 'name'">
+				AND NAME LIKE '%' || #{searchKeyword} || '%'		
+			</if>
+		</where>
 	</select>
 	
 	<!-- 단건 조회 -->

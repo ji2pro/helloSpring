@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>insertUser.jsp</title>
+<title>login.jsp</title>
 </head>
 <body>
-	<h3>회원 등록</h3>
-	<form action="insertUser.do">
+${userDTO}<hr>
+${user}<hr>
+	<h3>로그인</h3>
+	<form action="login.do" method="post">
 		id <input type="text" name="id" value="${user.id}"><br>
 		pw <input type="text" name="password" value="${user.password}"><br>
-		name <input type="text" name="name" value="${user.name}"><br>
-		role <input type="text" name="role" value="${user.role}"><br>
-		<input type="submit" value="등록"/>
+		<input type="submit" value="로그인"/>
 	</form>
 </body>
 </html>

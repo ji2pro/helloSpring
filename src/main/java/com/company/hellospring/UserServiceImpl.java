@@ -20,15 +20,19 @@ public class UserServiceImpl implements UserService {
 	public UserDTO getUser(UserDTO dto) {
 		return dao.getUser(dto);  //핵심관심
 	}
-	public List<UserDTO> getUsers() {
+	public List<UserDTO> getUsers(UserSearchDTO searchDto) {
 		//int a = 5/0;
-		System.out.println("사용자 목록 조회");		
-		return dao.getUsers();  //핵심관심
+		System.out.println("사용자 목록 조회");
+		return dao.getUsers(searchDto);  //핵심관심
 	}
 	public int updateUser(UserDTO dto) {
 		return dao.updateUser(dto);
 	}
 	public int deleteUser(UserDTO dto) {
 		return dao.deleteUser(dto);
+	}
+	@Override
+	public int getCnt(UserSearchDTO searchDto) {
+		return dao.getCnt(searchDto);
 	}
 }

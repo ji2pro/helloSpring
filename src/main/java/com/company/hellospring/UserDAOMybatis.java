@@ -11,26 +11,30 @@ public class UserDAOMybatis {
 	@Autowired
 	SqlSessionTemplate mybatis;
 
-	// 전체 조회
-	public List<UserDTO> getUsers() {
+	//전체 조회
+	public List<UserDTO> getUsers(UserSearchDTO searchDto) {
 		System.out.println("user mybatis 목록 조회 ======");
-		return mybatis.selectList("user.getUsers");
+		return mybatis.selectList("user.getUsers", searchDto);
 	}
-	// 단건 조회
+	//건수 조회
+	public int getCnt(UserSearchDTO searchDto) {
+		return mybatis.selectOne("user.getCnt", searchDto);
+	}
+	//단건 조회
 	public UserDTO getUser(UserDTO dto) {
 		return mybatis.selectOne("user.getUser", dto);
 	}
-	// 등록
+	//등록
 	public int insertUser(UserDTO dto) {
 		System.out.println("mybatis 사용자 등록");
 		return mybatis.insert("user.insertUser", dto);
 	}
-	// 수정
+	//수정
 	public int updateUser(UserDTO dto) {
 		System.out.println("mybatis 사용자 수정");
 		return mybatis.update("user.updateUser", dto);
 	}
-	// 삭제
+	//삭제
 	public int deleteUser(UserDTO dto) {
 		System.out.println("mybatis 사용자 삭제");
 		return mybatis.delete("user.deleteUser", dto);

@@ -26,7 +26,7 @@
 	<aop:aspectj-autoproxy />
 
 	<!-- DataSource 설정 -->
-	<beans:bean id="dataSource"
+	<beans:bean id="dataSourceSpied"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.OracleDriver" />
@@ -36,6 +36,18 @@
 		<beans:property name="password" value="spring" />
 	</beans:bean>
 
+	<beans:bean id="dataSource"
+		class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<beans:constructor-arg ref="dataSourceSpied" />
+		<beans:property name="logFormatter">
+			<beans:bean
+				class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<beans:property name="loggingType" value="MULTI_LINE" />
+				<beans:property name="sqlPrefix" value="SQL:::" />
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
 	<!-- Spring JDBC 설정 -->
 	<beans:bean id="jdbcTemplate"
 		class="org.springframework.jdbc.core.JdbcTemplate">
@@ -43,12 +55,15 @@
 	</beans:bean>
 
 	<!-- Mybatis 설정 -->
-	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="configLocation" value="classpath:sql-map-config-spring.xml" />
-		<beans:property name="mapperLocations" value="classpath:mapper/*.xml" />
+		<beans:property name="configLocation"
+			value="classpath:sql-map-config-spring.xml" />
+		<beans:property name="mapperLocations"
+			value="classpath:mapper/*.xml" />
 	</beans:bean>
-	
+
 	<beans:bean class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sqlSession"></beans:constructor-arg>
 	</beans:bean>
@@ -65,10 +80,12 @@
 			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
-	
+
 	<aop:config>
-		<aop:pointcut id="allPointcut" expression="execution(* com.company..*Impl.*(..))" />
-		<aop:advisor pointcut-ref="allPointcut" advice-ref="txAdvice" />
+		<aop:pointcut id="allPointcut"
+			expression="execution(* com.company..*Impl.*(..))" />
+		<aop:advisor pointcut-ref="allPointcut"
+			advice-ref="txAdvice" />
 	</aop:config>
 
 	<!-- <beans:bean id="before" class="com.company.hellospring.common.BeforeAdvice" 

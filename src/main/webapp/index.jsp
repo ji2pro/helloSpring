@@ -7,6 +7,6 @@
 <title>index.jsp</title>
 </head>
 <body>
-<%response.sendRedirect("./getUsers.do"); %>
+<%response.sendRedirect("./login.do"); %>
 </body>
 </html>

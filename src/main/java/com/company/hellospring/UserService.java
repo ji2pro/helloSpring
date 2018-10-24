@@ -13,5 +13,8 @@ public interface UserService {
 	//단건 조회
 	public UserDTO getUser(UserDTO dto);
 	//전체 조회(검색)
-	public List<UserDTO> getUsers();
+	public List<UserDTO> getUsers(UserSearchDTO searchDto);
+	//건수 조회
+	public int getCnt(UserSearchDTO searchDto);
+	
 }
