@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BoardController {
-	@Autowired
-	BoardService boardService;
+	@Autowired	BoardService boardService;
 	@RequestMapping("/getBoards.do")
 	public String getBoards(Model model) {
 		model.addAttribute("list", boardService.getBoards());

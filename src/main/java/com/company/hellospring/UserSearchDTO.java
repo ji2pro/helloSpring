@@ -11,6 +11,8 @@ public class UserSearchDTO extends UserDTO {
 	private Integer end;
 	//foreach
 	private String[] ids;
+	//정렬 기준
+	private String sort;
 	
 	public String getSearchCondition() {
 		return searchCondition;
@@ -42,10 +44,15 @@ public class UserSearchDTO extends UserDTO {
 	public void setIds(String[] ids) {
 		this.ids = ids;
 	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
 	@Override
 	public String toString() {
 		return "UserSearchDTO [searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", start="
-				+ start + ", end=" + end + ", ids=" + Arrays.toString(ids) + "]";
+				+ start + ", end=" + end + ", ids=" + Arrays.toString(ids) + ", sort=" + sort + "]";
 	}
-
 }

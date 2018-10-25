@@ -7,8 +7,10 @@
 <title>login.jsp</title>
 </head>
 <body>
-${userDTO}<hr>
-${user}<hr>
+<hr>
+UserDTO : ${userDTO}<br>
+user : ${user}<br>
+<hr>
 	<h3>로그인</h3>
 	<form action="login.do" method="post">
 		id <input type="text" name="id" value="${user.id}"><br>

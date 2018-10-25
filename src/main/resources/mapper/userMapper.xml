@@ -19,8 +19,19 @@
 			<if test="searchCondition == 'name'">
 				AND NAME LIKE '%' || #{searchKeyword} || '%'		
 			</if>
+			<if test="role != null and role != ''">
+				AND ROLE = #{role}
+			</if>
 		</where>
-		ORDER BY ID
+		ORDER BY
+		<choose>
+			<when test="sort != null and sort != ''">
+				#{sort}
+			</when>
+			<otherwise>
+				ID
+			</otherwise>
+		</choose>
 	) U ) A WHERE RN BETWEEN #{start} and #{end}
 	</select>
 	

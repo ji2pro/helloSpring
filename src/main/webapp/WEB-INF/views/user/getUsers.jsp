@@ -12,13 +12,26 @@
 		document.frm.page.value = p;
 		document.frm.submit();
 	}
+	function sort(s) {
+		document.frm.sort.value = s;
+		document.frm.submit();
+	}
 </script>
 </head>
 <body>
+<img src="./images/googlelogo_color_272x92dp.png" style="width: 200px">
 <a href="insertUserForm.do">회원 등록</a><br>
 <div>
 	<form action="getUsers.do" name="frm">
 		<input type="hidden" name="page" value="1">
+		<input type="hidden" name="sort" value="id">
+		role
+		<select name="role">
+			<option value="">선택</option>
+			<c:forEach items="${roleMap}" var="temp">
+				<option value="${temp.key}">${temp.value}</option>
+			</c:forEach>
+		</select>
 		<select name="searchCondition">
 			<option value="id">아이디</option>
 			<option value="name">이름</option>
@@ -31,7 +44,10 @@
 	</form>
 </div>
 <table border="1" style="width: 500px;">
-	<tr><td>아이디</td><td>이름</td><td>패스워드</td><td>롤</td></tr>
+	<tr><td><a href="#" onclick="sort('id')">아이디</a></td>
+		<td><a href="#" onclick="sort('name')">이름</a></td>
+		<td>패스워드</td>
+		<td>롤</td></tr>
 	<c:forEach items="${list}" var="user">	
 		<tr>
 			<td><a href="updateUserForm.do?id=${user.id}">${user.id}</a></td>
