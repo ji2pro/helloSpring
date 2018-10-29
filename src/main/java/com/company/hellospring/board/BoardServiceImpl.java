@@ -16,7 +16,7 @@ public class BoardServiceImpl implements BoardService {
 		return null;
 	}
 	public int insertBoard(BoardDTO dto) {
-		return 0;
+		return dao.insertBoardProc(dto);
 	}
 	public int updateBoard(BoardDTO dto) {
 		return 0;

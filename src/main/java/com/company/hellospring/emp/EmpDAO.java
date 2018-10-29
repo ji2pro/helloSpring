@@ -31,4 +31,8 @@ public class EmpDAO {
 	public int insertEmp(EmpDTO dto) {
 		return mybatis.insert("emp.insertEmp", dto);
 	}
+	
+	public List<Map<String, Object>> getEmpChart() {
+		return mybatis.selectList("emp.getEmpChart");
+	}
 }

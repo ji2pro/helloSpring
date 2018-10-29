@@ -17,6 +17,7 @@
 			<td>내용</td>
 			<td>등록일</td>
 			<td>조회</td>
+			<td>첨부파일</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,6 +29,10 @@
 				<td>${board.content}</td>
 				<td>${board.regdate}</td>
 				<td>${board.cnt}</td>
+				<%-- <c:forTokens items="${board.uploadFileName}" delims="," var="img">
+					<td><img src="./images/${img}"></td>
+				</c:forTokens> --%>
+				<td><a href="./FileDown.do?atchFileId=${board.uploadFileName}">${board.uploadFileName}</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

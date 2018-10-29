@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,9 @@
 </script>
 </head>
 <body>
+<h2>
+	<spring:message code="list.sample"></spring:message>
+</h2>
 <img src="./images/googlelogo_color_272x92dp.png" style="width: 200px">
 <a href="insertUserForm.do">회원 등록</a><br>
 <div>
@@ -40,7 +44,7 @@
 			document.frm.searchCondition.value = '${userSearchDTO.searchCondition}';
 		</script>
 		<input type="text" name="searchKeyword" value="${userSearchDTO.searchKeyword}">
-		<input type="submit" value="검색">
+		<input type="submit" value="<spring:message code="button.search" />">
 	</form>
 </div>
 <table border="1" style="width: 500px;">
@@ -50,7 +54,7 @@
 		<td>롤</td></tr>
 	<c:forEach items="${list}" var="user">	
 		<tr>
-			<td><a href="updateUserForm.do?id=${user.id}">${user.id}</a></td>
+			<td><a href="updateUserForm.do/${user.id}">${user.id}</a></td>
 			<td>${user.name}</td>
 			<td>${user.password}</td>
 			<td>${user.role}</td>

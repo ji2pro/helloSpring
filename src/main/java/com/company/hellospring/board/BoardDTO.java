@@ -1,5 +1,9 @@
 package com.company.hellospring.board;
 
+import java.util.Arrays;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDTO {
 	private int seq;
 	private String title;
@@ -8,6 +12,8 @@ public class BoardDTO {
 	private String regdate;
 	private int cnt;
 	private String out_msg;
+	private String uploadFileName;
+	private MultipartFile[] uploadFile;
 	
 	public int getSeq() {
 		return seq;
@@ -48,10 +54,23 @@ public class BoardDTO {
 	public void setOut_msg(String out_msg) {
 		this.out_msg = out_msg;
 	}
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+	public MultipartFile[] getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile[] uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	@Override
 	public String toString() {
 		return "BoardDTO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content
-				+ ", regdate=" + regdate + ", cnt=" + cnt + ", out_msg=" + out_msg + "]";
+				+ ", regdate=" + regdate + ", cnt=" + cnt + ", out_msg=" + out_msg + ", uploadFileName="
+				+ uploadFileName + ", uploadFile=" + Arrays.toString(uploadFile) + "]";
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;

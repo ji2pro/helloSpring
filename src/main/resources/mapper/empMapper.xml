@@ -67,4 +67,13 @@
 			   		    #{hireDate},
 			   		    #{jobId}   )
 	</insert>
+	
+	<!-- 차트 map -->
+	<select id="getEmpChart" resultType="map">
+		SELECT DEPARTMENT_NAME AS "departmentName",
+			   COUNT(FIRST_NAME) AS "cnt"
+			FROM HR.EMPLOYEES E JOIN HR.DEPARTMENTS D
+				ON (E.DEPARTMENT_ID = D.DEPARTMENT_ID)
+			GROUP BY DEPARTMENT_NAME
+	</select>
 </mapper> 

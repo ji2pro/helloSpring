@@ -11,6 +11,7 @@
 		#{title},
 		#{writer},
 		#{content, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{uploadFileName},
 		#{seq, mode=OUT, jdbcType=NUMERIC, javaType=int},
 		#{out_msg, mode=OUT, jdbcType=VARCHAR, javaType=string}
 		)
