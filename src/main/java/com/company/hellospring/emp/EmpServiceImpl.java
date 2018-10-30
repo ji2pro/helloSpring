@@ -13,4 +13,7 @@ public class EmpServiceImpl implements EmpService {
 	public List<Map<String, Object>> getEmpChart() {
 		return dao.getEmpChart();
 	}
+	public List<Map<String, Object>> getEmpDept() {
+		return dao.getEmpDept();
+	}
 }

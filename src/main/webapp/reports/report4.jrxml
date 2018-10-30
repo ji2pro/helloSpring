@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="692fd487-4336-4b35-b65d-3b5658672f88">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="gulm_font" pdfFontName="malgun.ttf" pdfEncoding="Identity-H"/>
+	<queryString>
+		<![CDATA[SELECT
+			EMPLOYEES.EMPLOYEE_ID 		AS "employeeId",
+			EMPLOYEES.FIRST_NAME 		AS "firstName",
+			EMPLOYEES.LAST_NAME 		AS "lastName",
+			EMPLOYEES.EMAIL 			AS "email",
+			EMPLOYEES.PHONE_NUMBER 		AS "phoneNumber",
+			EMPLOYEES.HIRE_DATE 		AS "hireDate",
+			EMPLOYEES.JOB_ID 			AS "jobId",
+			EMPLOYEES.SALARY 			AS "salary",
+			EMPLOYEES.COMMISSION_PCT	AS "commissionPct",
+			EMPLOYEES.MANAGER_ID 		AS "managerId",
+			EMPLOYEES.DEPARTMENT_ID 	AS "departmentId",
+			DEPARTMENTS.DEPARTMENT_NAME AS "departmentName"
+		FROM HR.EMPLOYEES join DEPARTMENTS
+		    on (EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID)
+		ORDER BY EMPLOYEES.DEPARTMENT_ID]]>
+	</queryString>
+	<field name="employeeId" class="java.math.BigDecimal"/>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="lastName" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="phoneNumber" class="java.lang.String"/>
+	<field name="hireDate" class="java.sql.Timestamp"/>
+	<field name="jobId" class="java.lang.String"/>
+	<field name="salary" class="java.math.BigDecimal"/>
+	<field name="commissionPct" class="java.math.BigDecimal"/>
+	<field name="managerId" class="java.math.BigDecimal"/>
+	<field name="departmentId" class="java.math.BigDecimal"/>
+	<field name="departmentName" class="java.lang.String"/>
+	<group name="departmentId">
+		<groupExpression><![CDATA[$F{departmentId}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<textField>
+					<reportElement x="0" y="0" width="87" height="20" uuid="707f866f-f5d4-4c10-a4e3-d182fd19beae"/>
+					<textFieldExpression><![CDATA[$F{departmentId}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="87" y="0" width="136" height="20" uuid="d3ef78d1-8fb4-4375-a9c0-d16d8d067fec"/>
+					<textFieldExpression><![CDATA[$F{departmentName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<frame>
+				<reportElement x="134" y="11" width="300" height="79" uuid="9739552c-2728-4d83-bef9-2320eaf2a572"/>
+				<staticText>
+					<reportElement x="127" y="10" width="100" height="20" uuid="85afead3-bd62-4a4a-862e-69df47bf4b90"/>
+					<text><![CDATA[Static text]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="127" y="45" width="100" height="20" uuid="bd310a90-c0b9-4e9f-b3eb-9bc99b6dd399"/>
+					<text><![CDATA[Static text]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement style="gulm_font" x="0" y="0" width="87" height="20" uuid="b4b78e3a-c34b-4ead-884e-d1be92020e8c"/>
+				<text><![CDATA[사원 번호]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="gulm_font" x="87" y="0" width="94" height="20" uuid="d58fc5a8-a230-4ac4-b100-6eb6d2d4dca3"/>
+				<text><![CDATA[퍼스트 네임]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="gulm_font" x="181" y="0" width="94" height="20" uuid="21cea64e-db8c-4a6c-95cb-2e19f4517dae"/>
+				<text><![CDATA[라스트 네임]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="gulm_font" x="275" y="0" width="96" height="20" uuid="66b13148-8be2-4468-857c-e22d7b92c638"/>
+				<text><![CDATA[이메일]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="gulm_font" x="471" y="0" width="84" height="20" uuid="62008f79-2ada-4d5a-8655-e4534b623944"/>
+				<text><![CDATA[입사날짜]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="87" height="20" uuid="27592b08-2e9a-41d8-a802-5cdc0a7cdf37"/>
+				<textFieldExpression><![CDATA[$F{employeeId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="0" width="94" height="20" uuid="e396e70d-1276-4fd7-aff9-deb39ddb6e67"/>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="0" width="94" height="20" uuid="66dcb757-05e7-404b-b8d4-a9cf6da369d4"/>
+				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="0" width="96" height="20" uuid="e6536c28-860d-423c-be95-6e58c3ef120b"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="0" width="100" height="20" uuid="67c95621-4163-4b81-ac18-d98dabbbedc7"/>
+				<textFieldExpression><![CDATA[$F{salary}.toString() + " " + ($F{salary} > 5000 ? "High" : "Low")]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="471" y="0" width="84" height="20" uuid="d0334dcf-15b8-4e68-a3cd-89331be4bc64"/>
+				<textFieldExpression><![CDATA[$F{hireDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryNewPage="true" uuid="126e2b19-76a8-4c5a-a2a0-b2bf65079e15">
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[select * from employees order by department_id]]>
+	</queryString>
+	<field name="EMPLOYEE_ID" class="java.math.BigDecimal"/>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="LAST_NAME" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="PHONE_NUMBER" class="java.lang.String"/>
+	<field name="HIRE_DATE" class="java.sql.Timestamp"/>
+	<field name="JOB_ID" class="java.lang.String"/>
+	<field name="SALARY" class="java.math.BigDecimal"/>
+	<field name="COMMISSION_PCT" class="java.math.BigDecimal"/>
+	<field name="MANAGER_ID" class="java.math.BigDecimal"/>
+	<field name="DEPARTMENT_ID" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="560" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="171" width="555" height="373" uuid="691ec9e7-87bf-4937-852d-a9618564d384"/>
+				<imageExpression><![CDATA["./DkkxsxzXcAAkUl5.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="-20" y="0" width="595" height="61" uuid="b8b4da9a-21ea-43d9-80fd-ec623c1911ae"/>
+				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="bd22f28f-e47a-45a0-9cf3-e2f9a6684c9f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="D2Coding"/>
+				</textElement>
+				<text><![CDATA[iReport 실습]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="200" height="22" forecolor="#FFFFFF" uuid="684a6b8e-2390-4ddb-948f-2ee674548f06"/>
+				<textElement textAlignment="Right">
+					<font fontName="D2Coding"/>
+				</textElement>
+				<text><![CDATA[Wood SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="446" width="162" height="22" forecolor="#FFFFFF" uuid="94f77e08-509f-4607-8fb5-888cb95612b8"/>
+				<box leftPadding="10">
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="D2Coding" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[작성자 : 홍지상]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="423" y="468" width="100" height="20" uuid="089e900e-9974-4ef0-92c3-557b488dba09"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="423" y="468" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c27a2d5e-78f1-4a10-87f2-f10b22c6ce82"/>
+				<box leftPadding="10">
+					<leftPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="D2Coding" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[버전 : 1.0]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="162" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="e93e8ab1-e40a-46e0-a53b-d4bccc43776b"/>
+				<box leftPadding="10">
+					<leftPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="D2Coding" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[작성일자 : 2018. 10. 30]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="120" height="15" uuid="6dede653-68b0-4100-b954-f6507d30d2eb"/>
+				<text><![CDATA[EMPLOYEE ID]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="33" width="555" height="1" uuid="abceb011-0bcf-483c-8218-69f8c3506b17"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="120" y="19" width="154" height="15" uuid="64821a28-8387-4c62-b402-7b7f7a2e3023"/>
+				<text><![CDATA[E-MAIL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="31" width="555" height="1" uuid="3542398c-5409-4224-a65d-7deaf77db4be"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="32" width="274" height="15" uuid="f8e781f9-c258-4d85-aa19-60ec3bd3ecfe"/>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME} + " " + $F{LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="0" y="1" width="120" height="15" uuid="93daadc9-f028-491b-9e68-5ad175e00efd"/>
+				<textFieldExpression><![CDATA[$F{EMPLOYEE_ID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="17" width="120" height="15" uuid="6fe2a1da-a372-4d78-b5cf-ebf2ffe59ad6"/>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="48" width="555" height="1" uuid="f5d84956-ac24-45be-959b-de7025912cd5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1" uuid="6361d045-c12d-4cf2-a527-bcf612db6eb5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="120" y="0" width="154" height="16" uuid="55d47622-3fa2-4be6-a526-fc26c37e7cd7"/>
+				<textFieldExpression><![CDATA[$F{EMAIL}.toLowerCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f109d5f7-f17b-493f-a874-ed427c00af23"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="582cdee4-59f5-43c7-8cfa-dfcb6866f4c8"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="1fc4e793-df8b-429c-9a73-1b2b44cbe99d"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="5800d286-8309-4417-b36c-bb8ae21118e5"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="100" height="20" uuid="edf39bc9-0560-4099-8204-d1576071ef95"/>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
