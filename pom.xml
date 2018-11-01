@@ -255,6 +255,26 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- 웹 소켓 -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-websocket</artifactId>
+			<version>8.0.20</version>
+		</dependency>
+		
+		<!-- Spring4 Websocket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>
