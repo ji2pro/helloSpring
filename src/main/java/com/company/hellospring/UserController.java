@@ -77,8 +77,8 @@ public class UserController {
 
 	// 등록 폼
 	@RequestMapping("/insertUserForm.do")
-	public String insertUserForm(Model model, UserDTO dto) {
-		return "user/insertUser";
+	public String insertUserForm(UserDTO user) {
+		return "user/insertUserValid";
 	}
 
 	// 등록 처리
