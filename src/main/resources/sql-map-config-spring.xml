@@ -12,6 +12,7 @@
 		<typeAlias alias="user" type="com.company.hellospring.UserDTO" />
 		<typeAlias alias="board" type="com.company.hellospring.board.BoardDTO" />
 		<typeAlias alias="userSearch" type="com.company.hellospring.UserSearchDTO" />
+		<typeAlias alias="comments" type="com.company.hellospring.board.CommentsVO" />
 	</typeAliases>
 	
 </configuration>

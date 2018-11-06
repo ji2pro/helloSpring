@@ -13,7 +13,7 @@ public class BoardServiceImpl implements BoardService {
 		return dao.getBoards();
 	}
 	public BoardDTO getBoard(BoardDTO dto) {
-		return null;
+		return dao.getBoard(dto);
 	}
 	public int insertBoard(BoardDTO dto) {
 		return dao.insertBoardProc(dto);

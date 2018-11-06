@@ -25,8 +25,16 @@ import org.springframework.web.multipart.MultipartFile;
 public class BoardController {
 	@Autowired
 	BoardService boardService;
+	
+	//상세보기
+	@RequestMapping("getBoard")
+	public String getBoard(BoardDTO dto, Model model) {
+		model.addAttribute("board", boardService.getBoard(dto));
+		return "board/getBoard";
+	}
 
-	@RequestMapping("/getBoards.do")
+	//목록 조회
+	@RequestMapping("getBoards")
 	public String getBoards(Model model) {
 		model.addAttribute("list", boardService.getBoards());
 		return "board/getBoards";

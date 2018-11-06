@@ -19,7 +19,7 @@ public class BoardDAOMybatis {
 
 	// 단건 조회
 	public BoardDTO getBoard(BoardDTO dto) {
-		return null;
+		return mybatis.selectOne("board.getBoard", dto);
 	}
 
 	// 등록
