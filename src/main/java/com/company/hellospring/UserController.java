@@ -47,7 +47,7 @@ public class UserController {
 		// 전체 건수
 		int total = userService.getCnt(searchDto);
 		paging.setTotalRecord(total);
-		mv.addObject("pagning", paging);
+		mv.addObject("paging", paging);
 
 		// 시작/마지막 레코드 번호
 		searchDto.setStart(paging.getFirst());
