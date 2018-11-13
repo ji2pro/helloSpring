@@ -85,6 +85,25 @@
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 
+	<!-- 스프링과 JPA 연동 설정 -->
+	<beans:bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></beans:bean>
+	
+	<beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	    <beans:property name="dataSource" ref="dataSource"></beans:property>
+	    <beans:property name="jpaVendorAdapter" ref="jpaVendorAdapter"></beans:property>
+	    <beans:property name="packagesToScan" value="com.company.hellospring.board"></beans:property>
+	    <beans:property name="jpaProperties">
+			<beans:props>
+			<beans:prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</beans:prop>
+			<beans:prop key="hibernate.show_sql">true</beans:prop>
+			<beans:prop key="hibernate.format_sql">true</beans:prop>
+			<beans:prop key="hibernate.use_sql_comments">false</beans:prop>
+			<beans:prop key="hibernate.id.new_generator_mappings">true</beans:prop>
+			<beans:prop key="hibernate.hbm2ddl.auto">create</beans:prop>
+			</beans:props>
+	    </beans:property>
+	</beans:bean>
+
 	<!-- Mybatis 설정 -->
 	<beans:bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -98,9 +117,29 @@
 	<beans:bean class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sqlSession"></beans:constructor-arg>
 	</beans:bean>
+	
+	<!-- 트랜잭션 AOP -->
+	<!-- org.springframework.jdbc.datasource.DataSourceTransactionManager -->
+	<beans:bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<!-- <property name="dataSource" ref="dataSource"/> -->
+		<beans:property name="entityManagerFactory" ref="entityManagerFactory"></beans:property>
+	</beans:bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.yedam.app..*Impl.*(..))" 
+		     id="allpointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allpointcut"/>
+	</aop:config> 
 
 	<!-- Transaction 설정 -->
-	<beans:bean id="txManager"
+	<!-- <beans:bean id="txManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
@@ -110,7 +149,7 @@
 			<tx:method name="get*" read-only="true" />
 			<tx:method name="*" />
 		</tx:attributes>
-	</tx:advice>
+	</tx:advice> -->
 
 	<aop:config>
 		<aop:pointcut id="allPointcut"

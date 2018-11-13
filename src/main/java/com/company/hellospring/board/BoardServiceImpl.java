@@ -5,18 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("boardService")
 public class BoardServiceImpl implements BoardService {
-	@Autowired BoardDAOMybatis dao;
+	@Autowired
+	//BoardDAOMybatis dao;
+	BoardDAOJPA dao;
 
 	public List<BoardDTO> getBoards() {
-		return dao.getBoards();
+		return dao.getBoards(null);
 	}
 	public BoardDTO getBoard(BoardDTO dto) {
 		return dao.getBoard(dto);
 	}
 	public int insertBoard(BoardDTO dto) {
-		return dao.insertBoardProc(dto);
+		dao.insertBoard(dto);
+		return 0;
 	}
 	public int updateBoard(BoardDTO dto) {
 		return 0;

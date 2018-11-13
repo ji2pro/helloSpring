@@ -1,19 +1,36 @@
 package com.company.hellospring.board;
 
 import java.util.Arrays;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
+@Entity
+@Table(name="BOARD")
 public class BoardDTO {
+	@Id
+	@GeneratedValue
 	private int seq;
+	@Column(name="board_title", nullable=false, length=100)
 	private String title;
+	@Column(name="board_writer", updatable=false)
 	private String writer;
 	private String content;
-	private String regdate;
+	@Temporal(TemporalType.DATE)
+	private Date regdate = new Date();
 	private int cnt;
-	private String out_msg;
 	private String uploadFileName;
-	private MultipartFile[] uploadFile;
+	private MultipartFile[] uploadFile;  //첨부파일명
+	@Transient private String out_msg;
 	
 	public int getSeq() {
 		return seq;
@@ -39,14 +56,17 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(String regdate) {
+	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 	public int getCnt() {
 		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	public String getOut_msg() {
 		return out_msg;
@@ -71,8 +91,5 @@ public class BoardDTO {
 		return "BoardDTO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content
 				+ ", regdate=" + regdate + ", cnt=" + cnt + ", out_msg=" + out_msg + ", uploadFileName="
 				+ uploadFileName + ", uploadFile=" + Arrays.toString(uploadFile) + "]";
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
 	}
 }
